@@ -1,22 +1,23 @@
 $(document).ready(() => {
-  // Variables:
+  // Variables
   const celebs = [
     "emma stone",
     "emma watson",
     "chris hemsworth",
     "steve carell",
     "liam neeson",
-    "jim carrey"
+    "jim carrey",
+    "sheldon cooper",
+    "amy farrah fowler"
   ];
 
-  // click event to take in user submit and add to buttons and array
+  // click event to take in user input and add to array
   $("#add-celeb").click(event => {
     event.preventDefault();
     const person = $("#celeb-input")
       .val()
       .trim();
     celebs.push(person);
-    console.log(celebs);
 
     renderButtons();
   });
@@ -38,7 +39,7 @@ $(document).ready(() => {
     const celebButton = $(this).attr("data-name");
     const limit = 10;
     const APIKEY = "KnMVVGrq3rhGrzPMOG2M298JsmOlMerp";
-
+    //API call
     const queryURL =
       "http://api.giphy.com/v1/gifs/search?q=" +
       celebButton +
@@ -46,13 +47,11 @@ $(document).ready(() => {
       limit +
       "&api_key=" +
       APIKEY;
-
+    //ajax call
     $.ajax({
       url: queryURL,
       method: "GET"
     }).done(function(response) {
-      console.log(response);
-
       for (let i = 0; i < limit; i++) {
         const celebImage = $("<img>");
         celebImage.attr("src", response.data[i].images.original_still.url);
@@ -75,11 +74,11 @@ $(document).ready(() => {
       }
     });
   }
-
+  // Change from animate to still and vice versa
   function imageChangeState() {
-    var state = $(this).attr("data-state");
-    var animateImage = $(this).attr("data-animate");
-    var stillImage = $(this).attr("data-still");
+    const state = $(this).attr("data-state");
+    const animateImage = $(this).attr("data-animate");
+    const stillImage = $(this).attr("data-still");
 
     if (state == "still") {
       $(this).attr("src", animateImage);
@@ -89,7 +88,7 @@ $(document).ready(() => {
       $(this).attr("data-state", "still");
     }
   }
-
+  //call functions for displaying gifs and changing still/animate
   renderButtons();
   $(document).on("click", "#user-input", displayGIF);
   $(document).on("click", ".gif", imageChangeState);

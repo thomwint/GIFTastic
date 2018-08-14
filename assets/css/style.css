@@ -7,7 +7,7 @@ body {
     float: right;
 }
 
-button {
+button, #add-celeb {
     margin-right: 20px;
     padding: 10px;
     background-color: #99bbff;
@@ -19,4 +19,17 @@ button {
 input, label {
     display: block;
     margin: 20px;
+}
+
+#celeb {
+    font-weight: bold;
+    font-size: 25px;
+}
+
+input[type=text] {
+    padding: 12px 20px;
+    margin: 8px 0;
+    border: 1px solid #99bbff;
+    border-radius: 4px;
+    box-sizing: border-box;
 }
