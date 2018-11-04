@@ -41,7 +41,7 @@ $(document).ready(() => {
     const APIKEY = "KnMVVGrq3rhGrzPMOG2M298JsmOlMerp";
     //API call
     const queryURL =
-      "http://api.giphy.com/v1/gifs/search?q=" +
+      "https://api.giphy.com/v1/gifs/search?q=" +
       celebButton +
       "&limit=" +
       limit +
@@ -70,7 +70,7 @@ $(document).ready(() => {
         const pRating = $("<p>").text(`Rating: ${rating}`);
         newDiv.append(celebImage);
         newDiv.prepend(pRating);
-        $("#celebs").append(newDiv);
+        $("#celebs").prepend(newDiv);
       }
     });
   }
